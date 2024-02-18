@@ -11,7 +11,7 @@ const Logo = () => {
       }}
     >
       <Image
-        source={require("../assets/logo.png")}
+        source={require("../../assets/logo.png")}
         style={{ width: "100%", height: "100%" }}
         resizeMode="cover"
       />

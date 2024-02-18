@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import { Input, Button, Text } from "@rneui/themed";
-import Logo from "../components/Logo"; // Assuming Logo is a compatible React component or image
+import Logo from "../components/main/Logo"; // Assuming Logo is a compatible React component or image
 import COLORS from "../color";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -22,6 +22,8 @@ const LoginScreen = ({ navigation }) => {
         if (user) {
           navigation.navigate("Home");
         }
+        // setEmail("");
+        // setPassword("");
       })
       .catch((error) => {
         setIsLoading(false);
@@ -55,8 +57,6 @@ const LoginScreen = ({ navigation }) => {
             onChangeText={(text) => setPassword(text)}
           />
           <Button
-            // title="Sign in"
-            // buttonStyle={[styles.button, { backgroundColor: COLORS.red }]}
             title="LOG IN"
             buttonStyle={{
               backgroundColor: "black",
@@ -71,7 +71,7 @@ const LoginScreen = ({ navigation }) => {
             Don't have an account?{" "}
             <Text
               style={styles.signupLink}
-              onPress={() => navigation.navigate("RegisterScreen")}
+              onPress={() => navigation.navigate("Register")}
             >
               Signup
             </Text>

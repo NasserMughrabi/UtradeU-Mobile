@@ -32,7 +32,7 @@ const bottomTabs = [
   },
 ];
 
-const MobileBottomTabs = ({ activeTab, setActiveTab }) => {
+const MobileBottomTabs = ({ navigation, activeTab, setActiveTab }) => {
   return (
     <View style={styles.container}>
       {bottomTabs.map((tab, index) => (
@@ -42,6 +42,12 @@ const MobileBottomTabs = ({ activeTab, setActiveTab }) => {
           onPress={() => {
             if (!tab.disabled) {
               setActiveTab(tab.label);
+              if (tab.label === "Profile" || tab.label === "Home") {
+                navigation.navigate(tab.label);
+              }
+              if (tab.label === "Listing") {
+                navigation.navigate("CreatePost");
+              }
               // Handle "Listing" and "Filter" actions here
             }
           }}

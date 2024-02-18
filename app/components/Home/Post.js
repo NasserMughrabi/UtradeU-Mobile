@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Card, Button, Text, Image } from "react-native-elements";
+import { Avatar } from "@rneui/themed";
 import { View } from "react-native";
 import COLORS from "../../color.js";
 
-const Post = ({ navigation }) => {
+const Post = ({ navigation, post }) => {
   const [isPressed, setIsPressed] = useState(false);
 
   return (
@@ -13,16 +14,12 @@ const Post = ({ navigation }) => {
         borderWidth: 1,
         overflow: "hidden",
         marginBottom: 16,
-        // backgroundColor: "red",
         padding: 0,
       }}
-      // wrapperStyle={{backgroundColor: "blue"}}
     >
       <Card.Image
         style={{
-          // backgroundColor: "green",
           height: 200,
-          // padding: 0,
         }}
         resizeMode="cover"
         source={{
@@ -38,14 +35,33 @@ const Post = ({ navigation }) => {
             paddingVertical: 6,
           }}
         >
-          <Text style={{ color: "#FFFFFF", fontWeight: "bold" }}>$10</Text>
+          <Text style={{ color: "#FFFFFF", fontWeight: "bold", fontSize: 16 }}>
+            ${post.price}
+          </Text>
         </View>
       </Card.Image>
 
       <Card.Divider />
-      <View style={{padding: 10}}>
-        <Text h4 h4Style={{ marginBottom: 10 }}>
-          Math Book
+      <View style={{ padding: 10 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            paddingBottom: 10,
+          }}
+        >
+          <Avatar
+            size={32}
+            rounded
+            source={{ uri: "https://randomuser.me/api/portraits/men/35.jpg" }}
+          />
+          <Text h4 h4Style={{ paddingLeft: 10 }}>
+            {post?.user?.firstName} {post?.user?.lastName}
+          </Text>
+        </View>
+
+        <Text h4 h4Style={{ marginBottom: 10, fontWeight: "bold" }}>
+          {post?.postTitle}
         </Text>
         <Text style={{ color: "#555", marginBottom: 10 }}>6 mins ago</Text>
         <Button
