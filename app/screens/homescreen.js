@@ -48,7 +48,7 @@ const HomeScreen = ({ navigation }) => {
     );
 
     return () => unsubscribe(); // Detach the listener when the component unmounts
-  }, []);
+  }, [posts]);
 
   return (
     <>

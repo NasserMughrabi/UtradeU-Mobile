@@ -3,6 +3,7 @@ import { Card, Button, Text, Image } from "react-native-elements";
 import { Avatar } from "@rneui/themed";
 import { View } from "react-native";
 import COLORS from "../../color.js";
+import { UserAuth } from "../../context/AuthContext.js";
 
 const Post = ({ navigation, post }) => {
   const [isPressed, setIsPressed] = useState(false);
@@ -53,7 +54,8 @@ const Post = ({ navigation, post }) => {
           <Avatar
             size={32}
             rounded
-            source={{ uri: "https://randomuser.me/api/portraits/men/35.jpg" }}
+            // source={{ uri: "https://randomuser.me/api/portraits/men/35.jpg" }}
+            source={{ uri: post?.user?.photoURL }}
           />
           <Text h4 h4Style={{ paddingLeft: 10 }}>
             {post?.user?.firstName} {post?.user?.lastName}
