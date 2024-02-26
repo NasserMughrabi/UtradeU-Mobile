@@ -11,6 +11,18 @@ import { Picker } from "@react-native-picker/picker";
 import { UserAuth } from "../../context/AuthContext";
 import { auth, db } from "../../services/firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
+import { serverTimestamp } from "firebase/firestore";
+
+const items = [
+  "Books",
+  "Electronics",
+  "Appliances",
+  "Furniture",
+  "Clothing",
+  "Gaming",
+  "Outdoor",
+  "Other",
+];
 
 const ItemForm = ({ navigation, postData, setPostData }) => {
   const [isChecked, setIsChecked] = useState(false);
@@ -22,11 +34,37 @@ const ItemForm = ({ navigation, postData, setPostData }) => {
       return;
     }
 
+    if (
+      !postData.category ||
+      !postData.postTitle ||
+      !postData.description ||
+      !postData.price ||
+      !postData.quality
+    ) {
+      alert("All fields required!");
+      return;
+    }
+
+    if (postData.postTitle.length > 20) {
+      alert("Title cannot be more than 20 characters!");
+      return;
+    }
+
+    if (postData.description.length > 200) {
+      alert("Description cannot be more than 200 characters!");
+      return;
+    }
+
+    if (postData.price > 10000) {
+      alert("Enter a reasonable price, please!");
+      return;
+    }
+
     // Assuming 'postData' contains all the information of the post
     const newPostData = {
       ...postData,
       userId: user.uid, // Link the post to the user by their UID
-      //   timestamp: serverTimestamp(), // Add a timestamp for when the post is created/updated
+      timestamp: serverTimestamp(), // Add a timestamp for when the post is created/updated
     };
 
     try {
@@ -53,8 +91,9 @@ const ItemForm = ({ navigation, postData, setPostData }) => {
           }
         >
           <Picker.Item label="Select Category" value="" />
-          <Picker.Item label="Appliances" value="appliances" />
-          <Picker.Item label="Books" value="books" />
+          {items.map((item) => {
+            return <Picker.Item label={item} value={item.toLowerCase()} />;
+          })}
         </Picker>
 
         <Input
