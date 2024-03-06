@@ -9,15 +9,30 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["app/assets/*"],
+    "assetBundlePatterns": [
+      "app/assets/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.nasser258.utradeumobile"
     },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#ffffff"
+      },
+      "package": "com.nasser258.utradeumobile"
+    },
+    "web": {},
+    "extra": {
+      "eas": {
+        "projectId": "67e127bc-1e6f-40eb-90be-bd8b9e1caf31"
       }
     },
-    "web": {}
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/67e127bc-1e6f-40eb-90be-bd8b9e1caf31"
+    }
   }
 }

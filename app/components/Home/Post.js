@@ -11,26 +11,10 @@ import { Dimensions } from "react-native";
 const Post = ({ navigation, post, timeElapsed }) => {
   const [isPressed, setIsPressed] = useState(false);
   const [showDesc, setshowDesc] = useState(false);
-  const sliderWidth = Dimensions.get("window").width;
-  const itemWidth = sliderWidth * 0.76;
+  const { user } = UserAuth();
 
-  post = {
-    postTitle: "Cozy Mountain Cabin Retreat",
-    price: "200",
-    user: {
-      firstName: "Alex",
-      lastName: "Johnson",
-      photoURL:
-        "https://utradeu.s3.amazonaws.com/uploads/2024-02-20T19%3A01%3A31.837Z_1537AEBA-C1BA-4701-B639-FBB25CDD79BD.jpg",
-    },
-    quality: "New",
-    description:
-      "Experience the serenity of the mountains in our cozy cabin. Perfect for weekend getaways. Fully furnished with a fireplace and a stunning mountain view.",
-    images: [
-      "https://utradeu.s3.amazonaws.com/uploads/2024-02-20T19%3A01%3A31.837Z_1537AEBA-C1BA-4701-B639-FBB25CDD79BD.jpg",
-      "https://utradeu.s3.amazonaws.com/uploads/2024-02-20T19%3A20%3A42.730Z_297D45CB-946B-4ECF-8A33-146A3FFB64E1.jpg",
-    ],
-  };
+  const sliderWidth = Dimensions.get("window").width;
+  const itemWidth = sliderWidth * 1;
 
   const toggleShowAll = (e) => {
     e.stopPropagation(); // Prevent the click event from propagating to the parent link
@@ -82,6 +66,7 @@ const Post = ({ navigation, post, timeElapsed }) => {
           style={{
             position: "absolute",
             bottom: 0,
+            // right: 0,
             backgroundColor: COLORS.red,
             paddingHorizontal: 12,
             paddingVertical: 6,
@@ -158,7 +143,7 @@ const Post = ({ navigation, post, timeElapsed }) => {
         >
           <Text style={{ fontWeight: "light", color: "black", fontSize: 15 }}>
             {showDesc ? post?.description : post?.description?.substring(0, 48)}{" "}
-            {post?.description?.length > 3 && (
+            {post?.description?.length > 48 && (
               <Text
                 style={{
                   paddingLeft: 4,
@@ -177,13 +162,23 @@ const Post = ({ navigation, post, timeElapsed }) => {
         <Text style={{ color: "#555", marginBottom: 10, fontSize: 12 }}>
           {timeElapsed}
         </Text>
-        {/* <Button
-          title="Learn more"
-          buttonStyle={{
-            backgroundColor: COLORS.red,
-          }}
-          onPress={() => navigation.navigate("Login")}
-        /> */}
+        {user?.email?.toLowerCase() !== post?.user?.email?.toLowerCase() && (
+          <Button
+            title="Contact Seller"
+            buttonStyle={{
+              backgroundColor: COLORS.red,
+            }}
+            titleStyle={{ fontWeight: "bold" }}
+            onPress={() =>
+              navigation.navigate("Chat", {
+                firstName: post?.user?.firstName,
+                lastName: post?.user?.lastName,
+                senderId: user?.uid,
+                receiverId: post?.user?.uid,
+              })
+            }
+          />
+        )}
       </View>
     </Card>
   );

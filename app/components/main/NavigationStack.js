@@ -6,6 +6,9 @@ import LoginScreen from "../../screens/loginscreen.js";
 import ProfileScreen from "../../screens/profilescreen.js";
 import HomeScreen from "../../screens/homescreen.js";
 import CreatePostScreen from "../../screens/createpostscreen.js";
+import ChatScreen from "../../screens/chatscreen.js";
+import InboxUsersScreen from "../../screens/inboxusersscreen.js";
+import FilterScreen from "../../screens/filterscreen.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -28,9 +31,24 @@ const NavigationStack = () => {
             options={{ title: "Profile" }}
           />
           <Stack.Screen
-            name="CreatePost"
+            name="Filter"
+            component={FilterScreen}
+            options={{ title: "Filter" }}
+          />
+          <Stack.Screen
+            name="Listing"
             component={CreatePostScreen}
-            options={{ title: "Create Post" }}
+            options={{ title: "Listing" }}
+          />
+          <Stack.Screen
+            name="Inbox"
+            component={InboxUsersScreen}
+            options={{ title: "Inbox" }}
+          />
+          <Stack.Screen
+            name="Chat"
+            component={ChatScreen}
+            options={{ title: "Person Name" }}
           />
         </>
       ) : (

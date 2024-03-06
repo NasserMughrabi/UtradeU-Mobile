@@ -23,7 +23,7 @@ const bottomTabs = [
     icon: "message-circle",
     label: "Inbox",
     type: "feather",
-    disabled: true,
+    // disabled: true,
   },
   {
     icon: "user",
@@ -42,13 +42,7 @@ const MobileBottomTabs = ({ navigation, activeTab, setActiveTab }) => {
           onPress={() => {
             if (!tab.disabled) {
               setActiveTab(tab.label);
-              if (tab.label === "Profile" || tab.label === "Home") {
-                navigation.navigate(tab.label);
-              }
-              if (tab.label === "Listing") {
-                navigation.navigate("CreatePost");
-              }
-              // Handle "Listing" and "Filter" actions here
+              navigation.navigate(tab.label);
             }
           }}
           disabled={tab.disabled}

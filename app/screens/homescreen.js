@@ -84,7 +84,11 @@ const HomeScreen = ({ navigation }) => {
         const usersPromises = postsList.map(async (post) => {
           const userRef = doc(db, "users", post.userId);
           const userSnap = await getDoc(userRef);
-          return userSnap.exists() ? userSnap.data() : null;
+          if (!userSnap.exists()) {
+            console.log("No such user!");
+            return null;
+          }
+          return { uid: post.userId, ...userSnap.data() }; // Ensure UID is included in user data
         });
 
         // Await all promises to resolve
@@ -104,7 +108,7 @@ const HomeScreen = ({ navigation }) => {
   }, []);
 
   const calculateTimeElapsed = (timestamp) => {
-    console.log(timestamp);
+    // console.log(timestamp);
     if (!timestamp) {
       return "unkown time";
     }

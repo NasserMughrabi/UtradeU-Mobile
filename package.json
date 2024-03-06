@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.22.0",
+    "@react-native-community/slider": "^4.5.0",
     "@react-native-picker/picker": "^2.6.1",
     "@react-navigation/native": "^6.1.10",
     "@react-navigation/native-stack": "^6.9.18",
@@ -21,6 +22,7 @@
     "expo-firebase": "^0.0.0-alpha.0",
     "expo-image-picker": "~14.7.1",
     "expo-status-bar": "~1.11.1",
+    "expo-updates": "~0.24.11",
     "firebase": "^10.8.0",
     "react": "18.2.0",
     "react-native": "0.73.4",

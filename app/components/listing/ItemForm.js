@@ -1,17 +1,12 @@
 import React, { useRef, useState } from "react";
-import { ScrollView, View, Text, StyleSheet, TextInput } from "react-native";
-import {
-  CheckBox,
-  Input,
-  ButtonGroup,
-  Textarea,
-  Button,
-} from "react-native-elements";
+import { ScrollView, View } from "react-native";
+import { Avatar, Button, ButtonGroup, Text, Icon, Input } from "@rneui/themed";
 import { Picker } from "@react-native-picker/picker";
 import { UserAuth } from "../../context/AuthContext";
 import { auth, db } from "../../services/firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 import { serverTimestamp } from "firebase/firestore";
+import * as ImagePicker from "expo-image-picker";
 
 const items = [
   "Books",
@@ -26,6 +21,8 @@ const items = [
 
 const ItemForm = ({ navigation, postData, setPostData }) => {
   const [isChecked, setIsChecked] = useState(false);
+  const [images, setImages] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const { user } = UserAuth();
 
   const handlePost = async () => {
@@ -60,11 +57,18 @@ const ItemForm = ({ navigation, postData, setPostData }) => {
       return;
     }
 
+    if (isLoading) {
+      alert("Please wait for images to upload!");
+      return;
+    }
+
+
     // Assuming 'postData' contains all the information of the post
     const newPostData = {
       ...postData,
       userId: user.uid, // Link the post to the user by their UID
       timestamp: serverTimestamp(), // Add a timestamp for when the post is created/updated
+      images: images,
     };
 
     try {
@@ -81,6 +85,54 @@ const ItemForm = ({ navigation, postData, setPostData }) => {
     }
   };
 
+  const handleImagePick = async () => {
+    // Request permission
+    const permissionResult =
+      await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (permissionResult.granted === false) {
+      alert("You've refused to allow this app to access your photos!");
+      return;
+    }
+    // Pick the images
+    const pickerResult = await ImagePicker.launchImageLibraryAsync({
+      allowsMultipleSelection: true,
+    });
+    if (pickerResult.canceled) {
+      return;
+    }
+
+    // Set the selected images
+    setIsLoading(true);
+    const uploadPromises = pickerResult.assets.map((asset) =>
+      uploadImageToS3(asset.uri)
+    );
+    const imageUrls = await Promise.all(uploadPromises);
+    const successfulUploads = imageUrls.filter(url => url !== null);
+    setImages(successfulUploads);
+    setIsLoading(false);
+  };
+
+  const uploadImageToS3 = async (imageUri) => {
+    const s3 = new AWS.S3();
+    try {
+      const response = await fetch(imageUri);
+      const blob = await response.blob();
+
+      const uploadParams = {
+        Bucket: "utradeu",
+        Key: `uploads/${new Date().toISOString()}_${imageUri.split("/").pop()}`,
+        Body: blob,
+        // ACL: "public-read", // Uploaded files are publicly accessible
+      };
+
+      const data = await s3.upload(uploadParams).promise();
+      return data.Location; // Return the URL of the uploaded image
+    } catch (err) {
+      alert("Upload Error");
+      return null;
+    }
+  };
+
   return (
     <ScrollView>
       <View style={{ padding: 10, paddingTop: 0 }}>
@@ -91,8 +143,8 @@ const ItemForm = ({ navigation, postData, setPostData }) => {
           }
         >
           <Picker.Item label="Select Category" value="" />
-          {items.map((item) => {
-            return <Picker.Item label={item} value={item.toLowerCase()} />;
+          {items.map((item, index) => {
+            return <Picker.Item key={index} label={item} value={item.toLowerCase()} />;
           })}
         </Picker>
 
@@ -129,8 +181,34 @@ const ItemForm = ({ navigation, postData, setPostData }) => {
           }}
           selectedIndex={["new", "good", "fair"].indexOf(postData?.quality)}
           buttons={["New", "Good", "Fair"]}
-          containerStyle={{ marginBottom: 20 }}
+          containerStyle={{ marginBottom: 70 }}
         />
+
+        <View
+          style={{
+            position: "absolute",
+            bottom: 70,
+            right: 15,
+          }}
+        >
+          {isLoading ? (
+            <Button
+              radius={"sm"}
+              type="solid"
+              buttonStyle={{ backgroundColor: "black" }}
+              loading
+            ></Button>
+          ) : (
+            <Button
+              radius={"sm"}
+              type="solid"
+              buttonStyle={{ backgroundColor: "black" }}
+              onPress={handleImagePick}
+            >
+              <Icon name="image" color="white" size={17} />
+            </Button>
+          )}
+        </View>
 
         <Button
           title="Post"
