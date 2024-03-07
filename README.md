@@ -6,9 +6,7 @@ Author: Nasser Mughrabi
 
 UtradeU is a marketplace for University of Utah students and alumni to sell and buy items, aiming to minimize campus waste and promote community engagement.
 
-# Demo
-
-Images go here
+# Screens
 
 <div>
   <img src="./readmeImages/login.jpeg" height="400" width="200">
@@ -33,7 +31,15 @@ Images go here
 
 1. Download EXPO GO app on your phone
 
+<div>
+  <img src="./readmeImages/expo.jpeg" height="400" width="200">
+</div>
+
 2. Scan QR code for your device (IOS, Android)
+<div>
+  <img src="./readmeImages/ios.jpeg" height="400" width="200">
+  <img src="./readmeImages/android.jpeg" height="400" width="200">
+</div>
 
 # Technologies
 
