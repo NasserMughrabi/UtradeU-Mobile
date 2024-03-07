@@ -10,7 +10,7 @@ UtradeU is a marketplace for University of Utah students and alumni to sell and 
 
 Images go here
 
-<img src="readmeImages/image.png" alt="Example Image" width="100" height="100">
+<img src="readmeImages/home.png" alt="Home Image" width="100" height="100">
 
 
 # Preview
