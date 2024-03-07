@@ -10,16 +10,23 @@ UtradeU is a marketplace for University of Utah students and alumni to sell and 
 
 Images go here
 
-<img src="./readmeImages/login.jpeg" height="400" width="200">
-<img src="./readmeImages/signup.jpeg" height="400" width="200">
-<img src="./readmeImages/name.jpeg" height="400" width="200">
-<img src="./readmeImages/home.jpeg" height="400" width="200">
-<img src="./readmeImages/filter.jpeg" height="400" width="200">
-<img src="./readmeImages/listing.jpeg" height="400" width="200">
-<img src="./readmeImages/inbox.jpeg" height="400" width="200">
-<img src="./readmeImages/chat1.jpeg" height="400" width="200">
-<img src="./readmeImages/chat.jpeg" height="400" width="200">
-<img src="./readmeImages/profile.jpeg" height="400" width="200">
+<!-- First line of images -->
+<div dir="rtl">
+  <img src="./readmeImages/profile.jpeg" height="400" width="200" alt="Profile">
+  <img src="./readmeImages/chat.jpeg" height="400" width="200" alt="Chat">
+  <img src="./readmeImages/chat1.jpeg" height="400" width="200" alt="Chat1">
+  <img src="./readmeImages/inbox.jpeg" height="400" width="200" alt="Inbox">
+  <img src="./readmeImages/listing.jpeg" height="400" width="200" alt="Listing">
+</div>
+
+<!-- Second line of images -->
+<div dir="rtl">
+  <img src="./readmeImages/filter.jpeg" height="400" width="200" alt="Filter">
+  <img src="./readmeImages/home.jpeg" height="400" width="200" alt="Home">
+  <img src="./readmeImages/name.jpeg" height="400" width="200" alt="Name">
+  <img src="./readmeImages/signup.jpeg" height="400" width="200" alt="SignUp">
+  <img src="./readmeImages/login.jpeg" height="400" width="200" alt="Login">
+</div>
 
 # Preview
 
