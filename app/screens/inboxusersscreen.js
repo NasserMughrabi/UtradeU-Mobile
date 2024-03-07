@@ -103,7 +103,7 @@ const InboxUsersScreen = ({ navigation }) => {
               )}
               <ListItem.Content>
                 <ListItem.Title>
-                  {chatUser.firstName} {user.lastName}
+                  {chatUser.firstName} {chatUser.lastName}
                 </ListItem.Title>
                 {/* <ListItem.Subtitle>
                   {chatUser.lastMessage.length > 30

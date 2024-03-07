@@ -112,7 +112,26 @@ const Post = ({ navigation, post, timeElapsed }) => {
             paddingBottom: 10,
           }}
         >
-          <Avatar size={30} rounded source={{ uri: post?.user?.photoURL }} />
+          {post?.user?.photoURL ? (
+            <Avatar
+              rounded
+              size={30}
+              source={{
+                uri: post?.user?.photoURL,
+              }}
+            />
+          ) : (
+            <Avatar
+              rounded
+              size={30}
+              icon={{
+                name: "person-outline",
+                type: "material",
+                size: 26,
+              }}
+              containerStyle={{ backgroundColor: "#c2c2c2" }}
+            />
+          )}
           <Text style={{ paddingLeft: 6, fontSize: 18 }}>
             {post?.user?.firstName} {post?.user?.lastName}
           </Text>
