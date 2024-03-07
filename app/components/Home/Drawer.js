@@ -7,6 +7,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
+import { Button } from "@rneui/themed";
 import { COLORS } from "../../assets/static";
 import styles from "./styles";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -124,14 +125,27 @@ const Drawer = ({ navigation }) => {
             maximumTrackTintColor="gray"
           />
         </View>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.button}
           onPress={() => {
             navigation.closeDrawer();
           }}
         >
           <Text style={styles.buttonTxt}>Apply Filters</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
+
+        <Button
+          title="Apply Filters"
+          buttonStyle={{
+            backgroundColor: COLORS.primary,
+            borderWidth: 2,
+            borderColor: "white",
+            borderRadius: 10,
+          }}
+          titleStyle={{ fontWeight: "bold" }}
+          // onPress={handlePost}
+          onPress={() => navigation.navigate("Home")}
+        />
       </ScrollView>
     </SafeAreaView>
   );

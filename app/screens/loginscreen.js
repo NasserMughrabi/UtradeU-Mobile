@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, KeyboardAvoidingView, Platform } from "react-native";
 import { Input, Button, Text } from "@rneui/themed";
 import Logo from "../components/main/Logo"; // Assuming Logo is a compatible React component or image
 import COLORS from "../color";
@@ -34,51 +34,59 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.centeredView}>
-      <View style={styles.box}>
-        <View style={styles.logoContainer}>
-          <Logo />
-          <Text h4 h4Style={styles.heading}>
-            Sign in to continue!
-          </Text>
-        </View>
-        <View style={styles.formContainer}>
-          <Input
-            placeholder="Email"
-            leftIcon={{ type: "material", name: "email" }}
-            value={email}
-            onChangeText={(text) => setEmail(text)}
-          />
-          <Input
-            placeholder="password"
-            secureTextEntry={true}
-            leftIcon={{ type: "material", name: "lock" }}
-            value={password}
-            onChangeText={(text) => setPassword(text)}
-          />
-          <Button
-            title="LOG IN"
-            buttonStyle={{
-              backgroundColor: "black",
-              borderWidth: 2,
-              borderColor: "white",
-              borderRadius: 30,
-            }}
-            titleStyle={{ fontWeight: "bold" }}
-            onPress={handleLogin}
-          />
-          <Text style={styles.signupText}>
-            Don't have an account?{" "}
-            <Text
-              style={styles.signupLink}
-              onPress={() => navigation.navigate("Register")}
-            >
-              Signup
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={{ flex: 1 }}
+      keyboardVerticalOffset={80}
+    >
+      <View style={styles.centeredView}>
+        <View style={styles.box}>
+          <View style={styles.logoContainer}>
+            <Logo />
+            <Text h4 h4Style={styles.heading}>
+              Sign in to continue!
             </Text>
-          </Text>
+          </View>
+
+          <View style={styles.formContainer}>
+            <Input
+              placeholder="Email"
+              leftIcon={{ type: "material", name: "email" }}
+              value={email}
+              onChangeText={(text) => setEmail(text)}
+            />
+
+            <Input
+              placeholder="password"
+              secureTextEntry={true}
+              leftIcon={{ type: "material", name: "lock" }}
+              value={password}
+              onChangeText={(text) => setPassword(text)}
+            />
+            <Button
+              title="LOG IN"
+              buttonStyle={{
+                backgroundColor: "black",
+                borderWidth: 2,
+                borderColor: "white",
+                borderRadius: 30,
+              }}
+              titleStyle={{ fontWeight: "bold" }}
+              onPress={handleLogin}
+            />
+            <Text style={styles.signupText}>
+              Don't have an account?{" "}
+              <Text
+                style={styles.signupLink}
+                onPress={() => navigation.navigate("Register")}
+              >
+                Signup
+              </Text>
+            </Text>
+          </View>
         </View>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 

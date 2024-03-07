@@ -154,7 +154,7 @@ const Post = ({ navigation, post, timeElapsed }) => {
                 }}
                 onPress={toggleShowAll}
               >
-                {showDesc ? "See Less..." : "See More..."}
+                {showDesc ? "See less" : "...See more"}
               </Text>
             )}
           </Text>

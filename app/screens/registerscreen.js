@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Alert } from "react-native";
+import { View, StyleSheet, Alert, KeyboardAvoidingView, Platform } from "react-native";
 import { Input, Button, Text } from "@rneui/themed";
 import Logo from "../components/main/Logo"; // Make sure your Logo component is adapted if needed
 import COLORS from "../color";
@@ -41,17 +41,23 @@ const RegisterScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.center}>
-      <View style={styles.container}>
-        <View style={styles.logoContainer}>
-          <Logo />
-          <Text h4 h4Style={styles.heading}>
-            Sign up to continue!
-          </Text>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={{ flex: 1 }}
+      keyboardVerticalOffset={80}
+    >
+      <View style={styles.center}>
+        <View style={styles.container}>
+          <View style={styles.logoContainer}>
+            <Logo />
+            <Text h4 h4Style={styles.heading}>
+              Sign up to continue!
+            </Text>
+          </View>
+          {displayStep()}
         </View>
-        {displayStep()}
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 

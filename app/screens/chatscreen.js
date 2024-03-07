@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text } from "react-native";
+import { View, Text, KeyboardAvoidingView, Platform } from "react-native";
 import Messages from "../components/inbox/Messages";
 import ChatInput from "../components/inbox/ChatInput";
 import { db } from "../services/firebaseConfig";
@@ -74,14 +74,20 @@ const ChatScreen = ({ route, navigation }) => {
   };
 
   return (
-    <View>
-      <Messages messages={messages} />
-      <ChatInput
-        handleSend={handleSend}
-        handleInputChange={handleInputChange}
-        input={input}
-      />
-    </View>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={{ flex: 1 }}
+      keyboardVerticalOffset={80}
+    >
+      <View>
+        <Messages messages={messages} />
+        <ChatInput
+          handleSend={handleSend}
+          handleInputChange={handleInputChange}
+          input={input}
+        />
+      </View>
+    </KeyboardAvoidingView>
   );
 };
 

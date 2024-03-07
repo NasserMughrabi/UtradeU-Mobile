@@ -12,7 +12,7 @@ import COLORS from "../../color";
 import { Entypo } from "@expo/vector-icons";
 import { UserAuth } from "../../context/AuthContext";
 
-const Messages = ({ messages, isLoading }) => {
+const Messages = ({ messages }) => {
   const { user } = UserAuth();
 
   const sortedMessages = messages.sort((a, b) => {

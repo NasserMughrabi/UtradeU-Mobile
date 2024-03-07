@@ -31,7 +31,8 @@
     "react-native-elements": "^3.4.3",
     "react-native-file-picker": "^0.0.21",
     "react-native-image-picker": "^7.1.0",
-    "react-native-snap-carousel": "^3.9.1"
+    "react-native-snap-carousel": "^3.9.1",
+    "typescript": "^5.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

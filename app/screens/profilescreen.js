@@ -115,7 +115,26 @@ const ProfileScreen = ({ navigation }) => {
             width: 100,
           }}
         >
-          <Avatar size={80} rounded source={{ uri: user.photoURL }} />
+          {user.photoURL ? (
+            <Avatar
+              rounded
+              size={80}
+              source={{
+                uri: user.photoURL,
+              }}
+            />
+          ) : (
+            <Avatar
+              rounded
+              size={80}
+              icon={{
+                name: "person-outline",
+                type: "material",
+                size: 26,
+              }}
+              containerStyle={{ backgroundColor: "#c2c2c2" }}
+            />
+          )}
           <View
             style={{
               position: "absolute",

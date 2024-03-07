@@ -30,7 +30,7 @@ const ChatInput = ({ handleSend, handleInputChange, input }) => {
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
-      keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
+      keyboardVerticalOffset={Platform.OS === "ios" ? 60 : 20}
     >
       <View
         style={{
@@ -44,9 +44,6 @@ const ChatInput = ({ handleSend, handleInputChange, input }) => {
         }}
       >
         <TextInput
-          // value={message}
-          // onChangeText={(text) => setMessage(text)}
-          // ref={textareaRef}
           value={input}
           style={{
             flex: 1,
@@ -58,14 +55,13 @@ const ChatInput = ({ handleSend, handleInputChange, input }) => {
             backgroundColor: "white",
             paddingVertical: 10,
             alignItems: "center",
+            height: Math.max(40, inputHeight)
           }}
-          // style={[styles.textInput, { height: inputHeight }]}
           placeholder="Type a message..."
-          // multiline={true}
-          // numberOfLines={10}
+          multiline={true}
           textAlignVertical="top"
           onChangeText={handleChange}
-          //   onContentSizeChange={handleContentSizeChange}
+          onContentSizeChange={handleContentSizeChange}
         />
         <Pressable
           onPress={handleSend}
