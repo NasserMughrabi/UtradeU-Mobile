@@ -32,7 +32,7 @@ UtradeU is a marketplace for University of Utah students and alumni to sell and 
 1. Download EXPO GO app on your phone
 
 <div>
-  <img src="./readmeImages/expo.jpeg" height="400" width="300">
+  <img src="./readmeImages/expo1.jpeg" height="400" width="300">
 </div>
 
 2. Scan QR code for your device (IOS, Android)
