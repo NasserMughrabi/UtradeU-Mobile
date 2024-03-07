@@ -11,7 +11,7 @@ UtradeU is a marketplace for University of Utah students and alumni to sell and 
 Images go here
 
 <div>
-  <img src="./readmeImages/login.jpeg" height="400" width="250">
+  <img src="./readmeImages/login.jpeg" height="450" width="250">
   <img src="./readmeImages/signup.jpeg" height="400" width="200">
   <img src="./readmeImages/name.jpeg" height="400" width="200">
   <img src="./readmeImages/profile.jpeg" height="400" width="200">
