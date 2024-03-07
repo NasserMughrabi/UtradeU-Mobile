@@ -14,6 +14,7 @@ Images go here
   <img src="./readmeImages/login.jpeg" height="400" width="200">
   <img src="./readmeImages/signup.jpeg" height="400" width="200">
   <img src="./readmeImages/name.jpeg" height="400" width="200">
+  <img src="./readmeImages/profile.jpeg" height="400" width="200">
 </div>
 
 <div>
@@ -26,7 +27,6 @@ Images go here
   <img src="./readmeImages/inbox.jpeg" height="400" width="200">
   <img src="./readmeImages/chat1.jpeg" height="400" width="200">
   <img src="./readmeImages/chat.jpeg" height="400" width="200">
-  <img src="./readmeImages/profile.jpeg" height="400" width="200">
 </div>
 
 # Preview
