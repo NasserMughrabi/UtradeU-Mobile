@@ -17,11 +17,14 @@ UtradeU is a marketplace for University of Utah students and alumni to sell and 
 
 <div>
   <img src="./readmeImages/home.jpeg" height="400" width="200">
+  <img src="./readmeImages/seemore.jpeg" height="400" width="200">
+  <img src="./readmeImages/seeless.jpeg" height="400" width="200">
   <img src="./readmeImages/filter.jpeg" height="400" width="200">
-  <img src="./readmeImages/listing.jpeg" height="400" width="200">
 </div>
 
 <div>
+
+  <img src="./readmeImages/listing.jpeg" height="400" width="200">
   <img src="./readmeImages/inbox.jpeg" height="400" width="200">
   <img src="./readmeImages/chat1.jpeg" height="400" width="200">
   <img src="./readmeImages/chat.jpeg" height="400" width="200">
