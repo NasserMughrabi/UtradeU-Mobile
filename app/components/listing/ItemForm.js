@@ -7,6 +7,7 @@ import { auth, db } from "../../services/firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 import { serverTimestamp } from "firebase/firestore";
 import * as ImagePicker from "expo-image-picker";
+import COLORS from "../../color";
 
 const items = [
   "Books",
@@ -213,7 +214,7 @@ const ItemForm = ({ navigation, postData, setPostData }) => {
         <Button
           title="Post"
           buttonStyle={{
-            backgroundColor: "black",
+            backgroundColor: COLORS.red,
             borderWidth: 2,
             borderColor: "white",
             borderRadius: 10,
