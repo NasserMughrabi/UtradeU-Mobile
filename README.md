@@ -37,8 +37,8 @@ UtradeU is a marketplace for University of Utah students and alumni to sell and 
 
 2. Scan QR code for your device (IOS, Android)
 <div>
-  <img src="./readmeImages/ios.jpeg" height="400" width="300">
-  <img src="./readmeImages/android.jpeg" height="400" width="300">
+  <img src="./readmeImages/ios.jpeg" height="400" width="400">
+  <img src="./readmeImages/android.jpeg" height="400" width="400">
 </div>
 
 # Technologies
